@@ -1,0 +1,329 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"if",
+				"if?\t$… = ( … ) ? … : …"
+			],
+			[
+				"pass",
+				"passsword"
+			],
+			[
+				"tpl",
+				"tpl_dir"
+			],
+			[
+				"ba",
+				"background-color\tproperty"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"base",
+				"base64encode"
+			],
+			[
+				"fge",
+				"fgets"
+			],
+			[
+				"par",
+				"parse_url"
+			],
+			[
+				"link",
+				"linkDownload"
+			],
+			[
+				"for",
+				"for\tfor …"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"t",
+				"type\tAttr"
+			],
+			[
+				"in",
+				"input\tTag"
+			],
+			[
+				"timest",
+				"date_timestamp_get"
+			],
+			[
+				"op",
+				"option\tTag"
+			],
+			[
+				"senha",
+				"senha"
+			],
+			[
+				"clas",
+				"class_name"
+			],
+			[
+				"spl_aut",
+				"spl_autoload_register"
+			],
+			[
+				"setPa",
+				"setParams"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+	],
+	"file_history":
+	[
+		"/C/ecommerce/vendor/hcodebr/php-classes/src/Model.php",
+		"/C/ecommerce/vendor/hcodebr/php-classes/src/Model/User.php",
+		"/C/ecommerce/index.php",
+		"/C/ecommerce/views/admin/header.html",
+		"/C/ecommerce/views/admin/footer.html",
+		"/C/ecommerce/vendor/hcodebr/php-classes/src/PageAdmin.php",
+		"/C/ecommerce/views-cache/header.b18aae8b7bfe6bd31c1fe7cf29d9e8b3.rtpl.php",
+		"/C/ecommerce/views-cache/index.b18aae8b7bfe6bd31c1fe7cf29d9e8b3.rtpl.php",
+		"/C/ecommerce/views-cache/index.c5b813be90a10a19f97859c318d75589.rtpl.php",
+		"/C/ecommerce/views/admin/login.html",
+		"/C/ecommerce/vendor/hcodebr/php-classes/src/Page.php",
+		"/C/ecommerce/res/admin/index.html",
+		"/C/ecommerce/views/admin/index.html",
+		"/C/ecommerce/res/admin/starter.html",
+		"/C/ecommerce/views/header.html",
+		"/C/ecommerce/views/footer.html",
+		"/C/ecommerce/views/index.html",
+		"/C/ecommerce/res/site/index.html",
+		"/C/ecommerce/vendor/hcodebr/php-classes/src/Page/Page.php",
+		"/C/ecommerce/vendor/hcodebr/php-classes/composer.json",
+		"/C/ecommerce/composer.json",
+		"/C/ecommerce/vendor/rain/raintpl/library/Rain/Tpl.php",
+		"/C/ecommerce/vendor/rain/raintpl/example-simple.php",
+		"/C/ecommerce/vendor/hcodebr/php-classes/src/DB/Sql.php",
+		"/C/ecommerce/vendor/rain/raintpl/example-all.php",
+		"/D/Users/Matheus/Desktop/99 - Configurando o Projeto/composer.json",
+		"/C/xampp/apache/conf/extra/httpd-vhosts.conf",
+		"/C/ecommerce/README.md",
+		"/D/Users/Matheus/Desktop/99 - Configurando o Projeto/httpd-vhosts.conf",
+		"/C/xampp/apache/conf/extra/httpd-userdir.conf",
+		"/D/Users/Matheus/Desktop/99 - Configurando o Projeto/index.php",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/D/Users/Matheus/Desktop/99 - Configurando o Projeto/hosts",
+		"/C/xampp/htdocs/cursophp/cookie/exemplo02.php",
+		"/C/xampp/htdocs/cursophp/cookie/exemplo01.php",
+		"/C/xampp/htdocs/cursophp/curl/exemplo01.php",
+		"/C/xampp/htdocs/cursophp/teste01.php",
+		"/C/xampp/htdocs/cursophp/fileClass/Arquivo.php",
+		"/C/xampp/htdocs/cursophp/read/exemplo01.php",
+		"/C/xampp/htdocs/cursophp/config.php",
+		"/C/xampp/htdocs/cursophp/projeto01/config.php",
+		"/C/xampp/htdocs/cursophp/download/exemplo01.php",
+		"/C/xampp/htdocs/cursophp/fileClass/Upload.php",
+		"/C/xampp/htdocs/cursophp/read/exemplo02.php",
+		"/C/xampp/htdocs/cursophp/upload/exemplo01.php",
+		"/C/xampp/htdocs/teste-01.php",
+		"/C/xampp/htdocs/teste-02.php",
+		"/C/xampp/htdocs/cursophp/class/Usuario.php",
+		"/C/xampp/htdocs/cursophp/class/Sql.php",
+		"/C/xampp/htdocs/cursophp/index.php",
+		"/C/xampp/htdocs/cursophp/Sql.php"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"fa fa-enve",
+			"scr=",
+			"scr",
+			"src",
+			"href=\"../..",
+			"scr=\"",
+			"src=\"",
+			"href=\"",
+			"src=\"../../",
+			"src",
+			"href=\"../../",
+			"user",
+			"src",
+			"href",
+			"href=\"",
+			"src=\"",
+			"src",
+			"href",
+			"src",
+			"href",
+			"options",
+			"run",
+			"assign",
+			"forma",
+			"statement",
+			"statment",
+			"();\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"src=",
+			"href=\"",
+			"src=\"",
+			"href=\"../..",
+			"href=\"../../",
+			"src=\"/res/admin/",
+			"href=\"/res/admin/",
+			"scr=\"/res/admin/"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "projetoecommerce.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 181.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
