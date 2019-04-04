@@ -8,7 +8,7 @@ class Mailer
 {
 
 	const USERNAME = "matheuspardinidlk@gmail.com";
-	const PASSWORD = "minha senha aqui"; 
+	const PASSWORD = "mp$35497618dlk";
 	const NAME_FROM = "Pardini Store";
 
 	private $mail;
