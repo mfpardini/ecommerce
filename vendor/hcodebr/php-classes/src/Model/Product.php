@@ -15,6 +15,18 @@ class Product extends Model
         return $sql->select("SELECT * FROM tb_products ORDER BY desproduct");
     }
 
+    public static function checkList($list)
+    {
+        foreach ($list as &$row) {
+
+            $p = new Product();
+            $p->setData($row);
+            $row = $p->getValues();
+        }
+
+        return $list;
+    }
+
     public function save()
     {
         $sql = new Sql();
@@ -55,13 +67,14 @@ class Product extends Model
 
     public function checkPhoto()
     {
-        if (file_exists(
-            $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
+        $dest = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
             "res" . DIRECTORY_SEPARATOR . 
             "site" . DIRECTORY_SEPARATOR . 
             "img" . DIRECTORY_SEPARATOR . 
             "products" . DIRECTORY_SEPARATOR . 
-            $this->getidproduct() . ".jpg" ))
+            $this->getidproduct() . ".jpg";
+            
+        if (file_exists($dest))
         {
             $url = "/res/site/img/products/" . $this->getidproduct() . ".jpg";
         }
