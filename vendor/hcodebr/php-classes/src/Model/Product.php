@@ -97,8 +97,8 @@ class Product extends Model
 
     public function setPhoto($file)
     {
-        $extension = explode('.', $file['name']);
 
+        $extension = explode('.', $file['name']);
         $extension = end($extension);
 
         switch ($extension) {
@@ -115,16 +115,22 @@ class Product extends Model
             break;
         }
 
-        $dest = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
-            "res" . DIRECTORY_SEPARATOR . 
-            "site" . DIRECTORY_SEPARATOR . 
-            "img" . DIRECTORY_SEPARATOR . 
-            "products" . DIRECTORY_SEPARATOR . 
-            $this->getidproduct() . ".jpg";
-
-        imagejpeg($image, $dest);
-
+        $bg = imagecreatetruecolor(imagesx($image), imagesy($image));
+        imagefill($bg, 0, 0, imagecolorallocate($bg, 255, 255, 255));
+        imagealphablending($bg, TRUE);
+        imagecopy($bg, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
         imagedestroy($image);
+        $quality = 70; // 0 = worst / smaller file, 100 = better / bigger file 
+
+        $filePath = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
+                    "res" . DIRECTORY_SEPARATOR . 
+                    "site" . DIRECTORY_SEPARATOR . 
+                    "img" . DIRECTORY_SEPARATOR . 
+                    "products" . DIRECTORY_SEPARATOR . 
+                    $this->getidproduct() . ".jpg";
+
+        imagejpeg($bg, $filePath, $quality);
+        imagedestroy($bg);
 
         $this->checkPhoto();
     }
