@@ -178,7 +178,7 @@ class Cart extends Model
         {
             if ($totals['vllength'] < 16) $totals['vllength'] = 16;
             if ($totals['vlheight'] < 2) $totals['vlheight'] = 2;
-            //if ($totals['vlwidth'] < 11) $totals['vlwidth'] = 11;
+            if ($totals['vlwidth'] < 11) $totals['vlwidth'] = 11;
 
             $qs = http_build_query([
                 'nCdEmpresa'=>'',
@@ -267,8 +267,18 @@ class Cart extends Model
 
     public function getCalculateTotal()
     {
-        $this->updateFreight();
+        $sql = new Sql();
 
+        $row = $sql->select("SELECT * FROM tb_cartsproducts WHERE idcart = :idcart AND dtremoved IS NULL;",
+            [':idcart'=>$this->getidcart()]);
+
+        if (count($row) > 0) {
+            $this->updateFreight();
+        } else {
+            $this->setvlfreight(0);
+            $this->setnrdays(0);
+        }
+        
         $totals = $this->getProductsTotals();
 
         $this->setvlsubtotal($totals['vlprice']);
