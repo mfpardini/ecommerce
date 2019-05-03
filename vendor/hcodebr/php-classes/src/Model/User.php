@@ -9,7 +9,8 @@ use \Hcode\Mailer;
 class User extends Model
 {
     const SESSION = "User";
-    const LOGIN_ERROR = "loginError";
+    const LOGIN_ERROR = "userLoginError";
+    const REGISTER_ERROR = "userRegisterError";
     const KEY = "d64ca13d94fe69192a8c136595b161798ccbb9e6a3d5eb2029164c4311e20446";
     
     public static function getFromSession()
@@ -70,10 +71,10 @@ class User extends Model
             ||
             !(int)$_SESSION[User::SESSION]["iduser"] > 0
         ) {
-            //Não está logado
+            //is not logged
             return false;
         }
-        else // está logado:
+        else // is logged:
         {
             if ($inadmin === true && (bool)$_SESSION[User::SESSION]['inadmin'] === true)
             {
@@ -118,6 +119,7 @@ class User extends Model
         return $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) ORDER BY b.desperson");
     }
 
+    // LOGIN errors
     public static function setLoginError($msg)
     {
         $_SESSION[User::LOGIN_ERROR] = $msg;
@@ -135,6 +137,37 @@ class User extends Model
     public static function clearLoginError()
     {
         $_SESSION[User::LOGIN_ERROR] = NULL;
+    }
+
+    // REGISTER errors
+    public static function setRegisterError($msg)
+    {
+        $_SESSION[User::REGISTER_ERROR] = $msg;
+    }
+
+    public static function getRegisterError(){
+
+        $msg = (isset($_SESSION[User::REGISTER_ERROR])) ? $_SESSION[User::REGISTER_ERROR] : '';
+
+        User::clearRegisterError();
+
+        return $msg;
+    }
+
+    public static function clearRegisterError()
+    {
+        $_SESSION[User::REGISTER_ERROR] = NULL;
+    }
+
+    public static function checkLoginExists($login)
+    {
+        $sql = new Sql();
+
+        $results = $sql->select("SELECT * FROM tb_users WHERE deslogin = :deslogin", [
+            ':deslogin'=>$login
+        ]);
+
+        return (count($results) > 0);
     }
 
     public function save()
