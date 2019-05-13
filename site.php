@@ -19,48 +19,7 @@ $app->get('/', function() {
 
 });
 
-$app->get('/categories/:idcategory', function($idcategory) {
 
-	$nrPage = (isset($_GET['nrPage'])) ? (int)$_GET['nrPage'] : 1;
-
-	$category = new Category();
-
-	$category->get((int)$idcategory);
-
-	$pagination = $category->getProductsPage($nrPage);
-
-	$pages = [];
-
-	for ($i=1; $i <= $pagination['nrPages']; $i++) { 
-		array_push($pages, [
-			'link'=>"/categories/".$category->getidcategory()."?page=".$i,
-			'page'=>$i
-		]);
-	}
-
-	$page = new Page();
-
-	$page->setTpl("category", [
-		'category'=>$category->getValues(),
-		'products'=>$pagination['data'],
-		'pages'=>$pages
-	]);
-
-});
-
-$app->get("/products/:desurl", function($desurl) {
-
-	$product = new Product();
-
-	$product->getFromURL($desurl);
-
-	$page = new Page();
-
-	$page->setTpl("product-detail", [
-		'product'=>$product->getValues(),
-		'categories'=>$product->getCategories()
-	]);
-});
 
 $app->get("/cart", function() {
 
@@ -154,97 +113,6 @@ $app->get("/checkout", function() {
 
 });
 
-$app->get("/login", function() {
 
-	$page = new Page();
-
-	$page->setTpl("login", [
-		'loginError'=>User::getLoginError(),
-		'registerError'=>User::getRegisterError(),
-		'registerValues'=>isset($_SESSION['registerValues']) ? $_SESSION['registerValues'] : 
-			['name'=>'', 'email'=>'', 'phone'=>'']
-	]);
-
-});
-
-$app->post("/login", function() {
-
-	try {
-
-		User::login($_POST['login'], $_POST['password']);
-
-	} catch (Exception $e) {
-
-		User::setLoginError($e->getMessage());
-
-	}
-	
-	header("Location: /checkout");
-	exit;
-
-});
-
-$app->get("/logout", function() {
-
-	User::logout();
-
-	header("Location: /login");
-	exit;
-
-});
-
-$app->post("/register", function() {
-
-	$_SESSION['registerValues'] = $_POST;
-
-	if(!isset($_POST['name']) || $_POST['name'] == '') {
-
-		User::setRegisterError("Preencha seu nome.");
-		header("Location: /login");
-		exit;
-	}
-
-	if(!isset($_POST['email']) || $_POST['email'] == '') {
-
-		User::setRegisterError("Preencha seu email.");
-		header("Location: /login");
-		exit;
-	}
-
-	if(!isset($_POST['password']) || $_POST['password'] == '') {
-
-		User::setRegisterError("Preencha sua senha");
-		header("Location: /login");
-		exit;
-	}
-
-	if(User::checkLoginExists($_POST['email']) === true) {
-
-		User::setRegisterError("Já existe um usuário cadastrado com este e-mail.");
-		header("Location: /login");
-		exit;
-	}
-
-	$user = new User();
-
-	$user->setData([
-		'inadmin'=>0,
-		'deslogin'=>$_POST['email'],
-		'desperson'=>$_POST['name'],
-		'desemail'=>$_POST['email'],
-		'despassword'=>$_POST['password'],
-		'nrphone'=>$_POST['phone']
-	]);
-
-	$user->save();
-
-	User::login($_POST['email'], $_POST['password']);
-
-	$_SESSION['registerValues'] = NULL;
-
-	header("Location: /checkout");
-	exit;
-
-});
 
 ?>
