@@ -99,16 +99,9 @@
                                             <tr class="cart-subtotal">
                                                 <th>Subtotal</th>
                                                 <td><span class="amount">R$ 
-                                                    <?php if( $cart["vlsubtotal"] != NULL ){ ?>
+                                                    <?php echo formatPrice($cart["vlsubtotal"]); ?>
 
-                                                        <?php echo formatPrice($cart["vlsubtotal"]); ?>
-
-                                                    <?php }else{ ?>
-
-                                                        0,00
-                                                    <?php } ?>
-
-                                                </span></td>
+                                                    </span></td>
                                             </tr>
 
                                             <tr class="shipping">

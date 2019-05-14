@@ -9,8 +9,9 @@ use \Hcode\Mailer;
 class User extends Model
 {
     const SESSION = "User";
-    const LOGIN_ERROR = "userLoginError";
+    const ERROR = "userGenericError";
     const REGISTER_ERROR = "userRegisterError";
+    const SUCCESS = "userSuccess";
     const KEY = "d64ca13d94fe69192a8c136595b161798ccbb9e6a3d5eb2029164c4311e20446";
     
     public static function getFromSession()
@@ -119,24 +120,24 @@ class User extends Model
         return $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) ORDER BY b.desperson");
     }
 
-    // LOGIN errors
-    public static function setLoginError($msg)
+    // GENERIC errors
+    public static function setError($msg)
     {
-        $_SESSION[User::LOGIN_ERROR] = $msg;
+        $_SESSION[User::ERROR] = $msg;
     }
 
-    public static function getLoginError(){
+    public static function getError(){
 
-        $msg = (isset($_SESSION[User::LOGIN_ERROR])) ? $_SESSION[User::LOGIN_ERROR] : '';
+        $msg = (isset($_SESSION[User::ERROR])) ? $_SESSION[User::ERROR] : '';
 
-        User::clearLoginError();
+        User::clearError();
 
         return $msg;
     }
 
-    public static function clearLoginError()
+    public static function clearError()
     {
-        $_SESSION[User::LOGIN_ERROR] = NULL;
+        $_SESSION[User::ERROR] = NULL;
     }
 
     // REGISTER errors
@@ -158,6 +159,27 @@ class User extends Model
     {
         $_SESSION[User::REGISTER_ERROR] = NULL;
     }
+
+    // SUCCESS msg
+    public static function setSuccess($msg)
+    {
+        $_SESSION[User::SUCCESS] = $msg;
+    }
+
+    public static function getSuccess(){
+
+        $msg = (isset($_SESSION[User::SUCCESS])) ? $_SESSION[User::SUCCESS] : '';
+
+        User::clearSuccess();
+
+        return $msg;
+    }
+
+    public static function clearSuccess()
+    {
+        $_SESSION[User::SUCCESS] = NULL;
+    }
+
 
     public static function checkLoginExists($login)
     {
