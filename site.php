@@ -100,19 +100,59 @@ $app->get("/checkout", function() {
 
 	User::verifyLogin(false);
 
+	$address = new Address();
 	$cart = Cart::getFromSession();
 
-	$address = new Address();
+	if (!isset($_GET['zipcode'])) {
+
+		$zipcode = $cart->getdeszipcode();
+		header("Location: /checkout?zipcode=$zipcode");
+		exit;
+	}
+
+	$address->loadFromCEP($_GET['zipcode']);
+
+	$cart->setdeszipcode($_GET['zipcode']);
+
+	$cart->save();
+
+	$cart->getCalculateTotal();
 
 	$page = new Page();
 
 	$page->setTpl("checkout", [
 		'cart'=>$cart->getValues(),
-		'address'=>$address->getValues()
+		'address'=>$address->getValues(),
+		'products'=>$cart->getProducts(),
+		'error'=>Address::getMsgError()
 	]);
-
 });
 
+$app->post("/checkout", function() {
+
+	User::verifyLogin(false);
+
+	if (!isset($_POST['zipcode']) || $_POST['zipcode'] === '') {
+		Address::setMsgError("Informe o CEP.");
+		header("Location: /checkout");
+		exit;
+	}
+
+	$address = new Address();
+
+	$user = User::getFromSession();
+
+	$_POST['deszipcode'] = $_POST['zipcode'];
+	$_POST['idperson'] = $user->getidperson();
+
+	$address->setData($_POST);
+
+	$address->save();
+
+	header("Location: /order");
+	exit;
+
+});
 
 
 ?>
