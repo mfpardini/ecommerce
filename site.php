@@ -153,7 +153,7 @@ $app->post("/checkout", function() {
 
 	$cart = Cart::getFromSession();
 
-	$total = $cart->getCalculateTotal();
+	$cart->getCalculateTotal();
 
 	$order = new Order();
 
@@ -162,7 +162,7 @@ $app->post("/checkout", function() {
 		'iduser'=>$user->getiduser(),
 		'idstatus'=>OrderStatus::EM_ABERTO,
 		'idaddress'=>$address->getidaddress(),
-		'vltotal'=>$total['vlprice'] + $cart->getvlfreight()
+		'vltotal'=>$cart->getvltotal()
 	]);
 
 	$order->save();
@@ -201,6 +201,8 @@ $dias_de_prazo_para_pagamento = 10;
 $taxa_boleto = 5.00;
 $data_venc = date("d/m/Y", time() + ($dias_de_prazo_para_pagamento * 86400));  // Prazo de X dias OU informe data: "13/04/2006"; 
 $valor_cobrado = formatPrice($order->getvltotal()); // Valor - REGRA: Sem pontos na milhar e tanto faz com "." ou "," ou com 1 ou 2 ou sem casa decimal
+
+$valor_cobrado = str_replace(".", "",$valor_cobrado);
 $valor_cobrado = str_replace(",", ".",$valor_cobrado);
 $valor_boleto=number_format($valor_cobrado+$taxa_boleto, 2, ',', '');
 

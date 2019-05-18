@@ -40,11 +40,16 @@
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="/profile"><i class="fa fa-user"></i> Minha Conta</a></li>
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="/profile"><i class="fa fa-user"></i> Minha Conta <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/profile"><i class="fa fa-user"></i> <?php echo getUserName(); ?></a></li>
+                                </ul>
+                            </li>
                             <li><a href="#"><i class="fa fa-heart"></i> Lista de Desejos</a></li>
                             <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Meu Carrinho</a></li>
                             <?php if( checkLogin(false) ){ ?>
-                            <li><a href="/profile"><i class="fa fa-user"></i> <?php echo getUserName(); ?></a></li>
+                            <li><a href="/profile/orders"><i class="fa fa-user"></i> Meus Pedidos</a></li>
                             <li><a href="/logout"><i class="fa fa-close"></i> Sair</a></li>
                             <?php }else{ ?>
                             <li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
@@ -90,7 +95,7 @@
                 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="/cart">Carrinho - <span class="cart-amunt">R$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                        <a href="/cart">Carrinho - <span class="cart-amunt">R$ <?php echo getCartVlSubtotal(); ?></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><?php echo getCartNrQtd(); ?></span></a>
                     </div>
                 </div>
             </div>

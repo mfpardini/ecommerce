@@ -2,6 +2,8 @@
 
 use \Hcode\Page;
 use \Hcode\Model\User;
+use \Hcode\Model\Order;
+use \Hcode\Model\Cart;
 
 
 // LOGIN AND LOGOUT
@@ -215,6 +217,42 @@ $app->post("/profile", function () {
 
 	header("Location: /profile");
 	exit;
+
+});
+
+$app->get("/profile/orders", function() {
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+	$page = new Page();
+
+	$page->setTpl("profile-orders", [
+		'orders'=>$user->getOrders()
+	]);
+
+});
+
+$app->get("/profile/orders/:idorder", function($idorder) {
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+	$order = new Order();
+
+	$order->get((int)$idorder);
+
+	$cart = Cart::getFromSession();
+
+	$page = new Page();
+
+	$page->setTpl("profile-orders-detail", [
+		'order'=>$order->getValues(),
+		'cart'=>$cart->getValues(),
+		'products'=>$cart->getProducts()
+	]);
 
 });
 
