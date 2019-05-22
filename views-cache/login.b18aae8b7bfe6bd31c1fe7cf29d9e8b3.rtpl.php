@@ -29,6 +29,11 @@
   <div class="login-logo">
     <a href="/res/admin/index2.html"><b>Admin</b>LTE</a>
   </div>
+  <?php if( $loginError != '' ){ ?>
+  <div class="alert alert-danger">
+      <?php echo htmlspecialchars( $loginError, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+  </div>
+  <?php } ?>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>

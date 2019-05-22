@@ -26,7 +26,7 @@ class User extends Model
         return $user;
     }
 
-    public static function login($login, $passsword)
+    public static function login($login, $password)
     {
 
         $sql = new Sql();
@@ -42,7 +42,7 @@ class User extends Model
 
         $data = $results[0];
 
-        if (password_verify($passsword, $data["despassword"]) === true)
+        if (password_verify($password, $data["despassword"]) === true)
         {
 
             $user = new User();
